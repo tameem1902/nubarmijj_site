@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-ar="نبرمج - الدعم المباشر" data-en="Nubarmij - Live Support">نبرمج - الدعم المباشر</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&display=swap');
+    body, input, button, textarea {
+      font-family: 'IBM Plex Sans Arabic', sans-serif;
+    }
+  </style>
+  <style>
+    .btn-primary {
+      background-color: #0b253f;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.375rem;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary:hover {
+      background-color: #183550;
+    }
+  </style>
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body class="bg-white text-gray-900 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-[#0b253f] text-white border-b border-gray-300">
+    <div class="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
+      <!-- Logo -->
+      <a href="#" class="flex items-center space-x-2 space-x-reverse">
+        <div class="w-12 h-12 rounded-md bg-[#0b253f] flex items-center justify-center border border-[#183550]">
+          <img src="C:\Users\Access\Desktop\logo.jpg" alt="logo" class="block" />
+        </div>
+        <h1 class="text-xl font-extrabold tracking-tighter select-none" data-ar="نبرمج" data-en="Nubarmij">نبرمج</h1>
+<div class="text-center my-4">
+</div>
+
+      </a>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex space-x-8 space-x-reverse text-sm font-semibold">
+          <a href="index.html" class="btn-primary" data-ar="الرئيسية" data-en="Home">الرئيسية</a>
+ 
+
+        <a href="#" data-ar="الخدمات" data-en="Services">الخدمات</a>
+        <a href="#" data-ar="من نحن" data-en="About Us">من نحن</a>
+        <a href="#" data-ar="اتصل بنا" data-en="Contact">اتصل بنا</a>
+      </nav>
+
+      <!-- Buttons -->
+      <div class="flex items-center gap-3">
+        <button data-ar="طلب مساعدة" data-en="Request Help" class="bg-[#0b253f] hover:bg-[#182e50] px-4 py-2 rounded text-white font-semibold">طلب مساعدة</button>
+        <button data-ar="تسجيل الدخول" data-en="Login" class="bg-white border border-[#0b253f] text-[#0b253f] hover:bg-[#0b253f] hover:text-white px-4 py-2 rounded font-semibold">تسجيل الدخول</button>
+        <button id="langToggleBtn" class="p-2 border rounded-full border-gray-300 text-gray-600 hover:text-black hover:border-black">
+          🌐 تغيير اللغة
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="flex-grow max-w-3xl mx-auto px-4 py-10 space-y-10">
+    <section class="text-center max-w-xl mx-auto">
+      <h2 class="text-3xl font-extrabold mb-2" data-ar="الدعم المباشر" data-en="Live Support">الدعم المباشر</h2>
+      <p class="text-gray-600" data-ar="تواصل مباشرة مع فريق الدعم الخاص بنا للحصول على المساعدة" data-en="Get in touch with our support team for help">تواصل مباشرة مع فريق الدعم الخاص بنا للحصول على المساعدة</p>
+    </section>
+
+    <!-- Chat -->
+    <section>
+      <div class="rounded-lg border bg-white shadow-lg max-w-4xl mx-auto">
+        <div class="p-4 border-b flex items-center gap-4">
+          <span class="relative flex h-10 w-10 shrink-0 overflow-hidden rounded-full">
+            <div class="bg-[#0b253f] text-white h-full w-full flex items-center justify-center font-bold text-lg">N</div>
+          </span>
+          <div>
+            <h3 class="font-medium" data-ar="فريق دعم نبرمج" data-en="Nubarmij Support Team">فريق دعم نبرمج</h3>
+            <p class="text-sm text-gray-500" data-ar="متصل الآن" data-en="Online now">متصل الآن</p>
+          </div>
+        </div>
+
+        <div id="messages" dir="ltr" class="relative overflow-y-auto h-[300px] p-6 space-y-6">
+          <div class="flex justify-start">
+            <div class="max-w-[80%] rounded-lg p-3 bg-gray-100">
+              <p data-ar="مرحبًا بك في دردشة الدعم. كيف يمكنني مساعدتك اليوم؟" data-en="Welcome to support chat. How can I help you today?">مرحبًا بك في دردشة الدعم. كيف يمكنني مساعدتك اليوم؟</p>
+            </div>
+          </div>
+        </div>
+
+        <form id="chatForm" class="p-4 border-t">
+          <div class="flex gap-2">
+            <input id="messageInput" class="flex-1 h-10 rounded-md border px-3 py-2 text-base focus:outline-none" placeholder="اكتب رسالتك هنا..." dir="rtl" />
+            <button type="submit" class="bg-[#0b253f] hover:bg-[#183550] text-white rounded-md h-10 w-10 flex items-center justify-center">📤</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-[#f3f6fb] border-t border-gray-300 py-10 text-gray-700 text-sm">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p data-ar="© 2025 نبرمج جميع الحقوق محفوظة" data-en="© 2025 Nubarmij. All rights reserved.">© 2025 نبرمج جميع الحقوق محفوظة</p>
+    </div>
+       <div class="space-y-2">
+  <div>
+      <h4 class="font-semibold mb-3 text-[#0e1327]">تواصل معنا</h4>
+      <ul class="space-y-2 text-gray-700 text-sm">
+        <li><span class="font-semibold">Email:</span> tameem1216@gmail.com</li>
+        <li><span class="font-semibold">Phone:</span> 01097912642</li>
+        <p class="text-sm text-muted-foreground">
+    <span class="font-medium">WhatsApp:</span>
+    <a href="https://wa.me/+201097912642" class="text-primary hover:underline">Chat with us directly on WhatsApp</a>
+    </p>
+      </ul>
+    </div>
+  </div>
+
+    <!-- Bottom footer small -->
+    <div class="mt-10 border-t border-gray-300 pt-4 max-w-7xl mx-auto px-4 flex justify-between text-xs text-gray-500 rtl">
+      <div class="space-x-4 space-x-reverse">
+        <a href="#" class="hover:underline">شروط الخدمة</a>
+        <a href="#" class="hover:underline">سياسة الخصوصية</a>
+      </div>
+      <p>© 2025 نبرمج جميع الحقوق محفوظة</p>
+    </div>
+  </footer>
+  </footer>
+
+  <!-- 🌐 Language Switch Script -->
+ <script>
+  let currentLang = 'ar';
+
+  const toggleBtn = document.getElementById('langToggleBtn');
+  const messageInput = document.getElementById('messageInput');
+  const messagesDiv = document.getElementById('messages');
+  const chatForm = document.getElementById('chatForm');
+
+  const aiResponses = {
+    ar: [
+      "شكرًا على تواصلك معنا، كيف يمكنني مساعدتك؟",
+      "نحن نعمل على حل مشكلتك بأسرع وقت ممكن.",
+      "تم استلام طلبك، وسنرد عليك قريبًا.",
+      "تواصل معنا عبر واتساب أو اتصل على 01097912642.",
+      "هل تحتاج إلى مساعدة إضافية؟"
+    ],
+    en: [
+      "Thank you for reaching out. How can I assist you?",
+      "We are working on your issue as fast as possible.",
+      "Your request has been received. We'll contact you soon.",
+      "Chat with us on WhatsApp or call 01097912642.",
+      "Do you need further assistance?"
+    ]
+  };
+
+  // Toggle Language
+  toggleBtn.addEventListener('click', () => {
+    currentLang = currentLang === 'ar' ? 'en' : 'ar';
+
+    // Update direction and language
+    document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = currentLang;
+
+    // Update button text
+    toggleBtn.textContent = currentLang === 'ar' ? '🌐 تغيير اللغة' : '🌐 Change Language';
+
+    // Update all elements with data-ar / data-en
+    document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+      el.innerHTML = el.getAttribute(`data-${currentLang}`);
+    });
+
+    // Update input placeholder
+    messageInput.placeholder = currentLang === 'ar' ? 'اكتب رسالتك هنا...' : 'Type your message here...';
+    messageInput.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+  });
+
+  function appendMessage(text, from = 'user') {
+    const wrapper = document.createElement('div');
+    wrapper.className = 'flex ' + (from === 'user' ? 'justify-end' : 'justify-start');
+
+    const bubble = document.createElement('div');
+    bubble.className = 'max-w-[80%] rounded-lg p-3 ' + (from === 'user' ? 'bg-[#0b253f] text-white' : 'bg-gray-200 text-gray-800');
+    bubble.innerHTML = `<p>${text}</p>`;
+
+    wrapper.appendChild(bubble);
+    messagesDiv.appendChild(wrapper);
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
+  }
+
+  async function aiReply() {
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    const responses = aiResponses[currentLang];
+    const reply = responses[Math.floor(Math.random() * responses.length)];
+    appendMessage(reply, 'bot');
+  }
+
+  chatForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const message = messageInput.value.trim();
+    if (!message) return;
+
+    appendMessage(message, 'user');
+    messageInput.value = "";
+    await aiReply();
+  });
+</script>
+
+</body>
+</html>

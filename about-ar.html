@@ -1,0 +1,1168 @@
+
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>نبرمج</title>
+  <style>
+    /* Reset and general */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background-color: #f9fafb;
+      color: #1f2937;
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
+    ul {
+      list-style: none;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 50%;
+      display: block;
+      margin: 0 auto 1rem auto;
+      object-fit: cover;
+    }
+    /* Navbar */
+    header {
+      background-color: #f3f4f6;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0.7rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 1rem;
+    }
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .navbar-links {
+      display: flex;
+      gap: 1.5rem;
+      font-weight: 500;
+    }
+    .navbar-links a {
+      color: #374151;
+      transition: color 0.3s ease;
+    }
+    .navbar-links a:hover {
+      color: #111827;
+    }
+    .navbar-start {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-weight: bold;
+      font-size: 1.25rem;
+      color: #111827;
+    }
+    .logo-box {
+      background-color: #12182b;
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 0.875rem;
+      font-weight: 700;
+      user-select: none;
+    }
+    .logo-text {
+      margin-right: 8px;
+    }
+    /* Buttons */
+    .btn-primary {
+      padding: 0.5rem 1.25rem;
+      background-color: #12182b;
+      color: #f9fafb;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary:hover {
+      background-color: #282f4a;
+    }
+    .btn-secondary {
+      padding: 0.5rem 1.25rem;
+      background-color: #f3f4f6;
+      color: #374151;
+      border: 1px solid #d1d5db;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .btn-secondary:hover {
+      background-color: #e5e7eb;
+      color: #111827;
+    }
+    .btn-lang {
+      border: 1px solid #d1d5db;
+      background: white;
+      border-radius: 50%;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.375rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .btn-lang:hover {
+      background-color: #e5e7eb;
+    }
+    /* Hero section */
+    .hero {
+      background-color: #e5e7eb;
+      padding: 3rem 1rem 4rem 1rem;
+      text-align: center;
+      direction: rtl;
+      font-weight: 600;
+    }
+    .hero h1 {
+      font-size: 1.75rem;
+      margin-bottom: 0.5rem;
+      color: #111827;
+    }
+    .hero p {
+      font-size: 1rem;
+      color: #6b7280;
+      max-width: 520px;
+      margin: 0 auto 2rem auto;
+      font-weight: 400;
+    }
+    .hero .btn-container {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+    /* Footer Section */
+    footer {
+      background-color: #f3f4f6;
+      padding: 3rem 1.5rem 1.5rem 1.5rem;
+      color: #374151;
+      font-size: 0.875rem;
+      direction: rtl;
+    }
+    .footer-top {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #d1d5db;
+    }
+    .footer-section {
+      max-width: 280px;
+    }
+    .footer-section h3 {
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+      color: #111827;
+    }
+    .footer-section a {
+      display: block;
+      margin-bottom: 0.6rem;
+      color: #374151;
+      font-weight: 400;
+    }
+    .footer-section a:hover {
+      color: #12182b;
+    }
+    .footer-contact p,
+    .footer-contact a {
+      margin-bottom: 0.4rem;
+      font-weight: 400;
+    }
+    .footer-contact a {
+      color: #1e40af;
+      font-weight: 600;
+    }
+    .footer-bottom {
+      text-align: right;
+      margin-top: 1rem;
+      color: #6b7280;
+    }
+    /* Team Section */
+    .team-section {
+      padding: 3rem 1rem 3rem 1rem;
+      background-color: #f9fafb;
+      direction: rtl;
+      text-align: center;
+    }
+    .team-section h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: #111827;
+    }
+    .team-section p.desc {
+      color: #6b7280;
+      font-weight: 400;
+      max-width: 520px;
+      margin: 0 auto 2rem auto;
+      font-size: 1rem;
+    }
+    .team-grid {
+      display: flex;
+      justify-content: center;
+      gap: 3.5rem;
+      flex-wrap: wrap;
+      margin-top: 2rem;
+    }
+    .team-member {
+      max-width: 200px;
+    }
+    .team-member img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      margin-bottom: 0.5rem;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    }
+    .team-member h4 {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+      color: #111827;
+    }
+    .team-member p {
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: #6b7280;
+    }
+    /* Values Section */
+    .values-section {
+      padding: 3rem 1rem 3rem 1rem;
+      background-color: #f9fafb;
+      direction: rtl;
+      text-align: center;
+    }
+    .values-section h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 2rem;
+      color: #111827;
+    }
+    .values-grid {
+      display: flex;
+      justify-content: center;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .value-card {
+      background-color: #e5e7eb;
+      border-radius: 12px;
+      padding: 1.6rem 1.2rem;
+      flex: 1 1 210px;
+      max-width: 240px;
+      box-shadow: 0 3px 6px rgb(0 0 0 / 0.05);
+      text-align: right;
+      direction: rtl;
+      cursor: default;
+      transition: box-shadow 0.2s ease;
+    }
+    .value-card:hover {
+      box-shadow: 0 8px 20px rgb(0 0 0 / 0.12);
+    }
+    .value-card h3 {
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: #111827;
+      font-size: 1.1rem;
+      text-align: right;
+    }
+    .value-card p {
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: #6b7280;
+      text-align: right;
+      line-height: 1.4;
+    }
+    /* Story Section */
+    .story-section {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      padding: 3rem 2rem 3rem 2rem;
+      direction: rtl;
+      background-color: #f9fafb;
+      flex-wrap: wrap;
+    }
+    .story-image {
+      flex: 1 1 360px;
+      max-width: 420px;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+    }
+    .story-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .story-text {
+      flex: 2 1 420px;
+      max-width: 600px;
+      font-weight: 400;
+      font-size: 1.05rem;
+      color: #374151;
+    }
+    .story-text h2 {
+      font-weight: 700;
+      font-size: 1.65rem;
+      margin-bottom: 1rem;
+      color: #111827;
+      text-align: right;
+    }
+    /* About Section */
+    .about-section {
+      background: linear-gradient(180deg, #eef3f9 0%, #f9fafb 100%);
+      padding: 3rem 1rem 4rem 1rem;
+      text-align: center;
+      direction: rtl;
+      font-weight: 600;
+    }
+    .about-section h2 {
+      font-size: 2rem;
+      font-weight: 900;
+      margin-bottom: 0.6rem;
+      color: #12182b;
+    }
+    .about-section p {
+      font-weight: 400;
+      font-size: 1rem;
+      color: #6b7280;
+      margin-bottom: 2.5rem;
+    }
+    /* About features grid */
+    .features-grid {
+      display: flex;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .feature {
+      background-color: #e5e7eb;
+      border-radius: 12px;
+      padding: 2rem 1.5rem;
+      max-width: 220px;
+      cursor: default;
+      box-shadow: 0 3px 6px rgb(0 0 0 / 0.05);
+      text-align: center;
+      direction: rtl;
+      transition: box-shadow 0.2s ease;
+    }
+    .feature:hover {
+      box-shadow: 0 10px 20px rgb(0 0 0 / 0.13);
+    }
+    .feature-icon {
+      font-size: 2.5rem;
+      margin-bottom: 0.7rem;
+      color: #12182b;
+    }
+    .feature h3 {
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      font-size: 1.1rem;
+      color: #111827;
+    }
+    .feature p {
+      font-weight: 400;
+      font-size: 0.9rem;
+      color: #6b7280;
+      line-height: 1.3;
+    }
+    /* Responsive */
+    @media screen and (max-width: 1012px) {
+      .team-grid {
+        justify-content: center;
+        gap: 2.8rem;
+      }
+      .values-grid {
+        gap: 1rem;
+      }
+      .story-section {
+        flex-direction: column-reverse;
+        text-align: right;
+      }
+      .story-text, .story-image {
+        max-width: 100%;
+      }
+      .features-grid {
+        gap: 2rem;
+      }
+    }
+    @media screen and (max-width: 460px) {
+      header {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1rem;
+      }
+      .navbar-links {
+        gap: 1rem;
+        font-size: 0.875rem;
+      }
+      .hero h1 {
+        font-size: 1.5rem;
+      }
+      .team-grid {
+        flex-direction: column;
+        gap: 1.75rem;
+      }
+      .values-grid {
+        flex-direction: column;
+        gap: 1.3rem;
+      }
+      .feature {
+        max-width: 100%;
+      }
+    }
+     /* Reset and basic */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+        Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+    }
+    body {
+      background: #f9fbfd;
+      color: #4a5568; /* gray-600 */
+      line-height: 1.6;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    /* Container */
+    .container {
+      width: 92%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    /* Header/Navigation */
+    header {
+      background: #f7fafc; /* light gray background */
+      border-bottom: 1px solid #e2e8f0; /* border-gray-200 */
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: #1a202c; /* blackish */
+    }
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      background: #0f274c;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: white;
+      font-weight: 700;
+      user-select: none;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 18px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      color: #4a5568;
+    }
+    nav ul li a:hover,
+    nav ul li.active a {
+      color: #1a202c;
+      font-weight: 700;
+    }
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.9rem;
+    }
+    .btn-login {
+      background: white;
+      border: 1.5px solid #1a202c;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #1a202c;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .btn-login:hover {
+      background: #1a202c;
+      color: white;
+    }
+    .btn-help {
+      background: #1a202c;
+      border: none;
+      padding: 8px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 600;
+      color: white;
+      transition: background-color 0.3s ease;
+    }
+    .btn-help:hover {
+      background: #374151;
+    }
+    .btn-globe {
+      background: white;
+      border: 1.5px solid #1a202c;
+      border-radius: 50%;
+      cursor: pointer;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #1a202c;
+      font-weight: 700;
+      font-size: 1rem;
+      user-select: none;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    .btn-globe:hover {
+      background: #1a202c;
+      color: white;
+    }
+
+    /* Section: About + Features (+ icon boxes) */
+    section.about-hero {
+      background-color: #f0f2f7;
+      text-align: center;
+      padding: 48px 16px 64px;
+    }
+    section.about-hero h1 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #080c13;
+      margin-bottom: 16px;
+    }
+    section.about-hero p {
+      max-width: 520px;
+      margin: 0 auto 32px auto;
+      color: #718096;
+      font-weight: 500;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+    .button-group {
+      display: inline-flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .button-group button {
+      cursor: pointer;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 12px 28px;
+      border: none;
+      transition: background-color 0.3s ease;
+    }
+    .btn-primary-dark {
+      background: #1a202c;
+      color: white;
+      border: none;
+    }
+    .btn-primary-dark:hover {
+      background: #2d3748;
+    }
+    .btn-primary-light {
+      background: white;
+      color: #1a202c;
+      border: 1.5px solid #1a202c;
+    }
+    .btn-primary-light:hover {
+      background: #e2e8f0;
+    }
+
+    /* Footer */
+    footer {
+      background-color: #f7fafc;
+      padding: 48px 16px 32px;
+      font-size: 0.9rem;
+      color: #718096;
+      border-top: 1px solid #e2e8f0;
+    }
+    footer .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      justify-content: space-between;
+      padding-bottom: 24px;
+    }
+    footer .footer-brand {
+      flex: 1 1 250px;
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    footer .footer-logo {
+      width: 50px;
+      min-width: 50px;
+      height: 50px;
+      background: #0f274c;
+      border-radius: 8px;
+      color: white;
+      font-weight: 700;
+      font-size: 14px;
+      user-select: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px 8px 8px;
+      line-height: 1;
+    }
+    footer .footer-brand-text {
+      flex: 1;
+    }
+    footer .footer-brand-text strong {
+      font-weight: 600;
+      color: #1a202c;
+      font-size: 1.1rem;
+      margin-bottom: 6px;
+      display: inline-block;
+    }
+    footer .footer-brand-text small {
+      font-weight: 400;
+    }
+    footer .footer-col {
+      flex: 1 1 160px;
+      max-width: 220px;
+      color: #718096;
+    }
+    footer .footer-col strong {
+      font-weight: 600;
+      color: #1a202c;
+      display: block;
+      margin-bottom: 12px;
+      font-size: 1.05rem;
+    }
+    footer .footer-col ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    footer .footer-col ul li {
+      margin-bottom: 8px;
+    }
+    footer .footer-col ul li a {
+      color: #718096;
+      transition: color 0.3s ease;
+    }
+    footer .footer-col ul li a:hover {
+      color: #1a202c;
+    }
+    footer hr {
+      border-color: #e2e8f0;
+      border-style: solid none none none;
+      margin: 12px 0 12px 0;
+    }
+    footer .footer-bottom {
+      font-size: 0.8rem;
+      color: #a0aec0;
+      text-align: left;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 0px;
+      user-select: none;
+    }
+    footer .footer-bottom .links {
+      float: right;
+      font-size: 0.8rem;
+      color: #a0aec0;
+    }
+    footer .footer-bottom .links a {
+      color: #a0aec0;
+      margin-left: 12px;
+      transition: color 0.3s ease;
+    }
+    footer .footer-bottom .links a:hover {
+      color: #718096;
+    }
+
+    /* About Heading Section */
+    section.about-header {
+      background-color: #ebf4ff;
+      padding: 64px 16px 48px;
+      text-align: center;
+      color: #0f274c;
+    }
+    section.about-header h2 {
+      font-size: 2.4rem;
+      font-weight: 900;
+      margin-bottom: 6px;
+      line-height: 1.2;
+    }
+    section.about-header p {
+      font-weight: 500;
+      font-size: 1rem;
+      color: #6c7a9a;
+    }
+
+    /* About Info Section with icons */
+    section.about-info {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      padding: 48px 16px;
+      max-width: 1200px;
+      margin: 0 auto 64px;
+      flex-wrap: wrap;
+      color: #2d3748;
+    }
+    .info-card {
+      background: #f7fafc;
+      border-radius: 16px;
+      padding: 24px 16px;
+      width: 280px;
+      box-shadow: 0 1px 6px rgb(0 0 0 / 0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+    .info-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 10px 20px rgb(0 0 0 / 0.12);
+    }
+    .info-icon {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 16px;
+      color: #1a202c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      user-select: none;
+      filter: drop-shadow(0 0 0.1rem #718096);
+    }
+    .info-card h3 {
+      font-weight: 800;
+      color: #1a202c;
+      margin-bottom: 8px;
+      font-size: 1.2rem;
+    }
+    .info-card p {
+      font-weight: 400;
+      color: #6c7a9a;
+      font-size: 0.94rem;
+      line-height: 1.4;
+    }
+
+    /* Story Section */
+    section.story-section {
+      max-width: 1200px;
+      margin: 0 auto 80px;
+      display: flex;
+      gap: 40px;
+      padding: 0 16px 64px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .story-text {
+      flex: 1 1 420px;
+      color: #4a5568;
+    }
+    .story-text h2 {
+      font-weight: 900;
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+      color: #111827;
+    }
+    .story-text p {
+      margin-bottom: 16px;
+      font-size: 1rem;
+      line-height: 1.5;
+      font-weight: 500;
+    }
+    .story-image {
+      flex: 1 1 480px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgb(0 0 0 / 0.1);
+    }
+    .story-image img {
+      border-radius: 16px;
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    /* Specialized Team Section */
+    section.team-section {
+      padding: 0 16px 72px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    section.team-section h2 {
+      font-weight: 900;
+      font-size: 2rem;
+      margin-bottom: 12px;
+      color: #111827;
+    }
+    section.team-section p {
+      max-width: 520px;
+      margin: 0 auto 36px;
+      font-weight: 500;
+      color: #718096;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .team-grid {
+      display: flex;
+      justify-content: center;
+      gap: 80px;
+      flex-wrap: wrap;
+    }
+    .team-member {
+      width: 200px;
+    }
+    .member-photo {
+      width: 128px;
+      height: 128px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 18px;
+      box-shadow: 0 2px 10px rgb(0 0 0 / 0.12);
+    }
+    .member-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+    }
+    .member-name {
+      font-weight: 900;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+      color: #0f274c;
+    }
+    .member-role {
+      font-weight: 500;
+      color: #718096;
+      font-size: 0.9rem;
+    }
+
+    /* Our Values Section */
+    section.values-section {
+      padding: 0 16px 72px;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    section.values-section h2 {
+      font-weight: 900;
+      font-size: 2rem;
+      margin-bottom: 36px;
+      color: #111827;
+    }
+    .values-grid {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+    .value-card {
+      background: #f0f0f0;
+      border-radius: 14px;
+      width: 280px;
+      padding: 24px 20px;
+      text-align: left;
+      box-shadow: 0 0 0 1px #e2e8f0 inset;
+      transition: box-shadow 0.3s ease;
+    }
+    .value-card:hover {
+      box-shadow: 0 6px 14px rgb(0 0 0 / 0.1);
+    }
+    .value-card strong {
+      display: block;
+      margin-bottom: 14px;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #080c13;
+    }
+    .value-card p {
+      font-weight: 500;
+      font-size: 0.95rem;
+      color: #6c7a9a;
+      line-height: 1.4;
+      white-space: pre-line;
+    }
+
+    /* Media Queries */
+    @media (max-width: 820px) {
+      section.about-info {
+        flex-direction: column;
+        gap: 24px;
+        align-items: center;
+      }
+      section.story-section {
+        flex-direction: column-reverse;
+        gap: 32px;
+        padding-bottom: 48px;
+      }
+      .team-grid {
+        flex-direction: column;
+        gap: 32px;
+      }
+      .values-grid {
+        flex-direction: column;
+        gap: 24px;
+      }
+      footer .footer-inner {
+        flex-direction: column;
+        text-align: center;
+      }
+      footer .footer-col {
+        max-width: 100%;
+        flex: 1 1 100%;
+        margin-bottom: 36px;
+      }
+      footer .footer-brand {
+        justify-content: center;
+      }
+      nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+ <!-- Header with Navbar -->
+  <header>
+    <div class="container navbar" role="banner">
+      <div class="nav-left">
+     <a href="#" class="brand" aria-label="نبرمج" style="display: flex; align-items: center;">
+  <img src="F:\draft\logo.jpg" alt="NUBARMIJ logo" style="height: 40px; margin-right: 8px;" />
+  <span>نبرمج</span>
+</a>
+
+        <nav aria-label="Primary navigation">
+          <ul>
+            <li><a href="index.html" aria-current="false">الرئيسية</a></li>
+            <li><a href="services.html" aria-current="false">الخدمات</a></li>
+            <li><a href="#" class="active" aria-current="page" style="font-weight:700;">من نحن</a></li>
+            <li><a href="contactus.html" aria-current="false">اتصل بنا</a></li>
+            <li><a href="chat.html" aria-current="false" style="color:#718096;">NUB chat</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <div class="nav-right" role="search">
+        <button class="btn-globe" id="goToPage" aria-label="Select language or region" title="Select language or region" type="button">
+  🌐
+</button>
+<script>
+  document.getElementById("goToPage").addEventListener("click", function () {
+    window.location.href = "about.html"; // غيّر الاسم حسب الصفحة اللي عايز تروح لها
+  });
+</script>
+
+        <button class="btn-login" id="loginBtn" type="button" aria-label="Login to your account">تسجيل الدخول</button>
+<script>
+  document.getElementById("loginBtn").addEventListener("click", function () {
+    window.location.href = "login.html"; // غير المسار حسب مكان صفحة تسجيل الدخول
+  });
+</script>
+
+        <button class="btn-help" type="button" aria-label="Request Help from NUBARMIJ">طلب المساعدة</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="story-section" aria-labelledby="story-title">
+      <div class="story-text">
+        <h2 id="story-title" style="font-size: 1.8rem; font-weight: 800; margin-bottom: 16px; color: var(--dark-blue);">The NUBARMIJ Story</h2>
+        <p>NUBARMIJ was founded with the goal of providing exceptional programming services that combine high quality and competitive prices. We started as a small team of passionate developers and evolved into an integrated company offering a wide range of programming services.</p>
+        <p>We believe that technology should be accessible to everyone, and that every project, regardless of its size, deserves a high-quality customized solution. This philosophy is what guides our work every day.</p>
+      </div>
+      <div class="story-image">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/abbbd2f1-0ed6-4c49-9641-f4bf22a142d3.png" alt="Modern creative office with team of 5 diverse people gathered around wood table, working on laptops and discussing a project." loading="lazy" onerror="this.style.display='none'" />
+      </div>
+    </section>
+
+  
+
+  <!-- Values Section -->
+  <section class="values-section" aria-labelledby="values-title">
+    <h2 id="values-title">قيمنا</h2>
+    <div class="values-grid" role="list">
+      <article class="value-card" role="listitem" tabindex="0">
+        <h3>الجودة</h3>
+        <p>نسعى دائماً للتميز في كل مشروع نقوم به</p>
+      </article>
+      <article class="value-card" role="listitem" tabindex="0">
+        <h3>الإبداع</h3>
+        <p>نبحث باستمرار عن حلول مبتكرة ونهج جديدة</p>
+      </article>
+      <article class="value-card" role="listitem" tabindex="0">
+        <h3>الالتزام</h3>
+        <p>نلتزم بالمواعيد النهائية والوعود التي نقطعها لعملائنا</p>
+      </article>
+      <article class="value-card" role="listitem" tabindex="0">
+        <h3>التطور المستمر</h3>
+        <p>نتعلم باستمرار ونتطور مهاراتنا لتقديم أفضل الحلول</p>
+      </article>
+    </div>
+  </section>
+
+  
+
+  <!-- About Section -->
+  <section class="about-section" aria-labelledby="about-title">
+    <h2 id="about-title">عن نبرمج</h2>
+    <p>شريكك التقني المحترف</p>
+    <div class="features-grid">
+      <article class="feature" tabindex="0" role="group" aria-label="رؤيتنا">
+        <div class="feature-icon" aria-hidden="true">💡</div>
+        <h3>رؤيتنا</h3>
+        <p>في نبرمج، نتصور عالماً حيث تكون خدمات البرمجة عالية الجودة متاحة للجميع، من الأفراد إلى الشركات.</p>
+      </article>
+      <article class="feature" tabindex="0" role="group" aria-label="قصتنا">
+        <div class="feature-icon" aria-hidden="true">🏅</div>
+        <h3>قصتنا</h3>
+        <p>تأسست نبرمج بمهمة بسيطة: تقديم حلول برمجية متميزة مع التركيز على الجودة والسرعة ورضا العملاء.</p>
+      </article>
+      <article class="feature" tabindex="0" role="group" aria-label="كيف نساعد">
+        <div class="feature-icon" aria-hidden="true">🤝</div>
+        <h3>كيف نساعد</h3>
+        <p>سواء كنت تبدأ عملك، أو تدير متجراً متنامياً، أو تواجه صعوبات في مشروع تقني، نبرمج معك.</p>
+      </article>
+    </div>
+  </section>
+  
+  <!-- Team Section -->
+  <section class="team-section" aria-labelledby="team-title">
+    <h2 id="team-title">فريقنا المتخصص</h2>
+    <p class="desc">نبرمج يضم فريقاً من المطورين المهرة والمصممين المبدعين الذين يتمتعون بخبرة واسعة في مجال تطوير البرمجيات.</p>
+    <div class="team-grid">
+      <article class="team-member" role="group" aria-label="تميم حماد مؤسس نبرمج و المطور الرئيسي">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8c9e8da3-8f3f-4bca-ab93-79c7a8e12cae.png" alt="صورة رأس لرجل في بدلة سوداء ونظارات، خلفية مكتبية مع إضاءة طبيعية ناعمة" loading="lazy" onerror="this.style.display='none'" />
+        <h4>تميم حماد</h4>
+        <p>مؤسس نبرمج و المطور الرئيسي و المدير التقني</p>
+      </article>
+      <article class="team-member" role="group" aria-label="زياد نادر مطور و مهندس برمجيات والشريك المؤسس">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/140a8946-50c7-4ea5-9298-c449997f428e.png" alt="صورة رأس لامرأة شابة مبتسمة بشعر بني طويل، خلفية برتقالية دافئة في بيئة مكتبية" loading="lazy" onerror="this.style.display='none'" />
+        <h4>زياد نادر</h4>
+        <p>مطور و مهندس برمجيات و الشريك المؤسس</p>
+      </article>
+      
+    </div>
+  </section>
+  
+<!-- Hero Section -->
+  <section class="hero" aria-labelledby="hero-title">
+    <h1 id="hero-title">جاهز للتعاون معنا؟</h1>
+    <p>دعنا نساعدك في تحقيق أهدافك التقنية. تواصل معنا اليوم لبدء رحلتك مع نبرمج.</p>
+    <div class="btn-container">
+      <button class="btn-secondary" aria-label="طلب مساعدة">طلب مساعدة</button>
+      <button class="btn-primary" id="contactBtn" aria-label="اتصل بنا">اتصل بنا</button>
+<script>
+  document.getElementById("contactBtn").addEventListener("click", function () {
+    window.location.href = "contactus.html"; // غيّرها حسب اسم الصفحة اللي عايز تروح لها
+  });
+</script>
+
+    </div>
+  </section>
+  <!-- Footer -->
+  <footer aria-label="تذييل">
+    <div class="footer-top">
+      <div class="footer-section" aria-labelledby="footer-title1">
+        <h3 id="footer-title1">نبرمج</h3>
+        <p>خدمات برمجية متميزة</p>
+      </div>
+      <nav class="footer-section" aria-labelledby="footer-title2">
+        <h3 id="footer-title2">الرئيسية</h3>
+        <a href="#services" tabindex="0">الخدمات</a>
+        <a href="#about" tabindex="0">من نحن</a>
+        <a href="contactus.html" tabindex="0">اتصل بنا</a>
+      </nav>
+      <nav class="footer-section" aria-labelledby="footer-title3">
+        <h3 id="footer-title3">الخدمات</h3>
+        <a href="#create-website" tabindex="0">إنشاء موقعك الخاص</a>
+        <a href="#create-system" tabindex="0">إنشاء نظامك الخاص</a>
+        <a href="#task-completion" tabindex="0">إكمال مهمة متقدمة</a>
+      </nav>
+      <address class="footer-section footer-contact" aria-labelledby="footer-title4">
+       <h4 class="font-semibold mb-3 text-[#0e1327]">اتصل بنا</h4>
+      <ul class="space-y-2 text-gray-700 text-sm">
+        <li><span class="font-semibold">البريد الإلكتروني:</span> tameem1216@gmail.com</li>
+        <li><span class="font-semibold">الهاتف:</span> 01097912642</li>
+        <p class="text-sm text-muted-foreground">
+    <span class="font-medium">WhatsApp:</span>
+    <a href="https://wa.me/+201097912642" class="text-primary hover:underline">تواصل معنا علي الواتساب </a>
+      </address>
+    </div>
+    <div class="footer-bottom" aria-live="polite" role="contentinfo">
+      © 2025 نبرمج. جميع الحقوق محفوظة.
+      <a href="#terms" tabindex="0" style="margin-left:1rem;">شروط الخدمة</a>
+      <a href="#privacy" tabindex="0" style="margin-left:1rem;">سياسة الخصوصية</a>
+    </div>
+  </footer>
+</body>
+</html>
+
+

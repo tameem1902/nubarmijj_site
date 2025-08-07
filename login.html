@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title data-ar="نبرمج - تسجيل الدخول" data-en="Nubarmij - Login">نبرمج - تسجيل الدخول</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { font-family: 'Arial', sans-serif; }
+  </style>
+
+  <!-- زر تغيير اللغة -->
+  <script>
+    let currentLang = 'ar';
+    window.addEventListener('DOMContentLoaded', () => {
+      const langBtn = document.getElementById('langToggle');
+      langBtn.addEventListener('click', () => {
+        currentLang = currentLang === 'ar' ? 'en' : 'ar';
+        document.documentElement.lang = currentLang;
+        document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+        langBtn.textContent = currentLang === 'ar' ? '🌐 تغيير اللغة' : '🌐 Change Language';
+        document.querySelectorAll('[data-ar][data-en]').forEach(el => {
+          el.textContent = el.getAttribute(`data-${currentLang}`);
+        });
+        document.getElementById("phoneInput").placeholder = currentLang === 'ar' ? 'مثال: +201234567890' : 'e.g. +201234567890';
+        document.getElementById("otpInput").placeholder = currentLang === 'ar' ? 'أدخل الكود' : 'Enter the code';
+      });
+    });
+  </script>
+
+  <!-- Firebase SDK (Modular) -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-app.js";
+    import {
+      getAuth, signInWithPopup, signInWithPhoneNumber,
+      GoogleAuthProvider, RecaptchaVerifier, signOut,
+      onAuthStateChanged, setPersistence, browserLocalPersistence
+    } from "https://www.gstatic.com/firebasejs/10.5.2/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyAJJAuewf8Zmp3XEzJ6j01EVG12eNQFJS0",
+      authDomain: "nubarmij-eb53b.firebaseapp.com",
+      projectId: "nubarmij-eb53b",
+      storageBucket: "nubarmij-eb53b.appspot.com",
+      messagingSenderId: "436779024476",
+      appId: "1:436779024476:web:dd93b5feed3b2de1846699",
+      measurementId: "G-WHXQDNJK7V"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    setPersistence(auth, browserLocalPersistence);
+
+    const googleBtn = document.getElementById('googleBtn');
+    const phoneBtn = document.getElementById('phoneBtn');
+    const phoneForm = document.getElementById('phoneForm');
+    const sendOtpBtn = document.getElementById('sendOtpBtn');
+    const verifyOtpBtn = document.getElementById('verifyOtpBtn');
+    const phoneInput = document.getElementById('phoneInput');
+    const otpInput = document.getElementById('otpInput');
+    const userInfo = document.getElementById('userInfo');
+    const userName = document.getElementById('userName');
+    const logoutBtn = document.getElementById('logoutBtn');
+
+    let confirmationResult;
+
+    googleBtn.addEventListener('click', async () => {
+      try {
+        const result = await signInWithPopup(auth, provider);
+        showUser(result.user);
+      } catch (error) {
+        alert("خطأ: " + error.message);
+      }
+    });
+
+    phoneBtn.addEventListener('click', () => {
+      phoneForm.classList.remove('hidden');
+      if (!window.recaptchaVerifier) {
+        window.recaptchaVerifier = new RecaptchaVerifier(auth, 'recaptcha-container', { size: 'invisible' });
+      }
+    });
+
+    sendOtpBtn.addEventListener('click', async () => {
+      const phone = phoneInput.value.trim();
+      if (!phone.startsWith('+')) return alert('يرجى إدخال رقم بصيغة دولية مثل +201234567890');
+      try {
+        confirmationResult = await signInWithPhoneNumber(auth, phone, window.recaptchaVerifier);
+        alert("✅ تم إرسال الكود");
+      } catch (error) {
+        alert("خطأ في إرسال الكود: " + error.message);
+      }
+    });
+
+    verifyOtpBtn.addEventListener('click', async () => {
+      const code = otpInput.value.trim();
+      try {
+        const result = await confirmationResult.confirm(code);
+        showUser(result.user);
+      } catch {
+        alert("❌ الكود غير صحيح");
+      }
+    });
+
+    logoutBtn.addEventListener('click', async () => {
+      await signOut(auth);
+      location.reload();
+    });
+
+    function showUser(user) {
+      userInfo.classList.remove('hidden');
+      userName.textContent = user.displayName || user.phoneNumber || "مستخدم";
+      phoneForm.classList.add('hidden');
+      googleBtn.classList.add('hidden');
+      phoneBtn.classList.add('hidden');
+    }
+
+    onAuthStateChanged(auth, user => {
+      if (user) showUser(user);
+    });
+  </script>
+</head>
+
+<body class="bg-white min-h-screen flex flex-col justify-between">
+
+  <!-- زر تغيير اللغة -->
+  <div class="p-4 text-end">
+    <button id="langToggle" class="px-3 py-1 border rounded text-sm text-gray-700 hover:text-black hover:border-black">🌐 تغيير اللغة</button>
+  </div>
+
+  <!-- تسجيل الدخول -->
+  <div class="flex-grow flex items-center justify-center">
+    <div class="bg-[#f3f6fb] p-8 rounded-lg shadow-xl w-full max-w-md text-gray-800">
+      
+      <!-- ✅ اللوجو والجملة -->
+      <div class="flex flex-col items-center mb-4">
+        <img src="F:\draft\logo.jpg" alt="Nubarmij Logo" class="h-20 mb-2" />
+        <p class="text-sm text-gray-500 italic font-light">Fast, Reliable, Professional Solutions</p>
+      </div>
+
+      <h2 class="text-2xl font-bold text-center text-[#0b253f] mb-6" data-ar="تسجيل الدخول إلى نبرمج" data-en="Login to Nubarmij">تسجيل الدخول إلى نبرمج</h2>
+
+      <button id="googleBtn" class="w-full bg-[#0b253f] hover:bg-[#183550] text-white py-2 px-4 rounded mb-4 font-semibold" data-ar="تسجيل الدخول بجوجل" data-en="Login with Google">
+        تسجيل الدخول بجوجل
+      </button>
+
+      <button id="phoneBtn" class="w-full border border-[#0b253f] text-[#0b253f] hover:bg-[#0b253f] hover:text-white py-2 px-4 rounded font-semibold mb-4" data-ar="تسجيل الدخول بالموبايل" data-en="Login with Phone">
+        تسجيل الدخول بالموبايل
+      </button>
+
+      <div id="phoneForm" class="space-y-3 hidden">
+        <input type="text" id="phoneInput" placeholder="مثال: +201234567890" class="w-full border p-2 rounded" />
+        <div id="recaptcha-container"></div>
+        <button id="sendOtpBtn" class="w-full bg-green-600 text-white py-2 rounded" data-ar="إرسال كود التفعيل" data-en="Send OTP">
+          إرسال كود التفعيل
+        </button>
+
+        <input type="text" id="otpInput" placeholder="أدخل الكود" class="w-full border p-2 rounded" />
+        <button id="verifyOtpBtn" class="w-full bg-[#0b253f] text-white py-2 rounded" data-ar="تأكيد الكود" data-en="Verify Code">
+          تأكيد الكود
+        </button>
+      </div>
+
+      <div id="userInfo" class="mt-6 hidden text-center">
+        <p class="text-lg mb-2 font-semibold">
+          <span data-ar="مرحبًا،" data-en="Hello,"></span>
+          <span id="userName"></span> 👋
+        </p>
+        <button id="logoutBtn" class="bg-gray-400 text-white py-2 px-4 rounded hover:bg-gray-500" data-ar="تسجيل الخروج" data-en="Logout">تسجيل الخروج</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-[#f3f6fb] border-t border-gray-300 py-10 text-gray-700 text-sm">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <p data-ar="© 2025 نبرمج جميع الحقوق محفوظة" data-en="© 2025 Nubarmij. All rights reserved.">© 2025 نبرمج جميع الحقوق محفوظة</p>
+    </div>
+    <div class="space-y-2 text-center mt-4">
+      <h4 class="font-semibold mb-2 text-[#0e1327]">تواصل معنا</h4>
+      <ul class="space-y-1 text-gray-700 text-sm">
+        <li><span class="font-semibold">Email:</span> tameem1216@gmail.com</li>
+        <li><span class="font-semibold">Phone:</span> 01097912642</li>
+         <span class="font-medium">WhatsApp:</span>
+        <a href="https://wa.me/+201097912642" class="text-primary hover:underline">Chat with us directly on WhatsApp</a>
+      </ul>
+    </div>
+    <div class="mt-6 border-t border-gray-300 pt-4 max-w-7xl mx-auto px-4 flex justify-between text-xs text-gray-500 rtl">
+      <div class="space-x-4 space-x-reverse">
+        <a href="#" class="hover:underline">شروط الخدمة</a>
+        <a href="#" class="hover:underline">سياسة الخصوصية</a>
+      </div>
+      <p>© 2025 نبرمج جميع الحقوق محفوظة</p>
+    </div>
+  </footer>
+
+</body>
+</html>

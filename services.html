@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NUBARMIJ Services</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafb; /* light background similar to website */
+      color: #1f2937; /* default text color - slate 800 */
+    }
+
+    a {
+      color: #6b7280; /* slate 500 */
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #111827; /* slate 900 */
+    }
+
+    /* Navbar and footer brand logo box */
+    .brand-icon {
+      background-color: #0f172a; /* dark blue-black background */
+      border-radius: 0.375rem; /* rounded-md */
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .brand-icon svg {
+      fill: white;
+      width: 24px;
+      height: 24px;
+    }
+
+    /* Buttons */
+    .btn-primary {
+      background-color: #0f172a;
+      color: white;
+      font-weight: 600;
+      padding: 0.5rem 1.25rem;
+      border-radius: 0.375rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-primary:hover {
+      background-color: #1e293b;
+    }
+
+    .btn-secondary {
+      background-color: white;
+      border: 1px solid #d1d5db; /* gray-300 */
+      color: #1f2937;
+      font-weight: 600;
+      padding: 0.5rem 1.25rem;
+      border-radius: 0.375rem;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-secondary:hover {
+      background-color: #f3f4f6; /* gray-100 */
+    }
+
+    .btn-icon {
+      background-color: #e5e7eb; /* gray-200 */
+      width: 56px;
+      height: 56px;
+      border-radius: 0.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-icon:hover {
+      background-color: #d1d5db; /* gray-300 */
+    }
+
+    .btn-icon svg {
+      stroke: #0f172a;
+      width: 28px;
+      height: 28px;
+    }
+
+    /* Section backgrounds */
+    .section-lightgray {
+      background-color: #e2e4e8;
+    }
+
+    .footer-link:hover {
+      text-decoration: underline;
+    }
+
+    /* List with check icons */
+    .check-list {
+      list-style: none;
+      padding-left: 0;
+      margin-top: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .check-list li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      font-weight: 400;
+    }
+
+    .check-list li svg {
+      stroke: #0f172a;
+      width: 20px;
+      height: 20px;
+      margin-right: 0.75rem;
+      flex-shrink: 0;
+    }
+
+    /* Round corners for images and cards */
+    .rounded-lg {
+      border-radius: 1rem;
+    }
+
+    /* Footer bottom text */
+    .footer-bottom {
+      font-size: 0.875rem;
+      color: #6b7280; /* slate-500 */
+      padding-top: 1rem;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body class="flex flex-col min-h-screen">
+
+  <!-- NAVBAR -->
+<nav class="bg-white border-b border-gray-200 sticky top-0 z-30">
+    <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center space-x-2">
+    <div class="bg-[#0e1327] rounded-md p-1 flex items-center justify-center w-10 h-10">
+      <img src="F:\draft\logo.jpg">
+
+
+    </div>
+    <span class="font-bold text-lg text-[#0e1327]">NUBARMIJ</span>
+  </div>
+  <div class="hidden md:flex space-x-6 text-sm font-semibold">
+  <a href="index.html" class="nav-link active">Home</a>
+  <a href="#" class="nav-link">Services</a>
+  <a href="about.html" class="nav-link">About</a>
+  <a href="contactus.html" class="nav-link">Contact Us</a>
+  <a href="chat.html" class="btn-primary">NUB Chat</a>
+
+</div>
+
+      <div class="flex items-center space-x-3">
+        <!-- Globe icon button -->
+        <button aria-label="تغيير اللغة" class="btn-icon" type="button" title="تغيير اللغة"
+  onclick="window.location.href='service-ar.html'">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+    stroke-width="1.5" stroke="currentColor" width="28" height="28"
+    aria-hidden="true" focusable="false">
+    <path stroke-linecap="round" stroke-linejoin="round"
+      d="M12 21c4.9706 0 9-4.0294 9-9s-4.0294-9-9-9-9 4.0294-9 9 4.0294 9 9 9z" />
+    <path stroke-linecap="round" stroke-linejoin="round" d="M2.1 12h19.8" />
+    <path stroke-linecap="round" stroke-linejoin="round"
+      d="M12 2.1c3.5 2 5 6 5 9.9 0 3.9-1.5 7.9-5 9.9" />
+  </svg>
+</button>
+
+
+        <button class="btn-secondary py-2 px-4 font-semibold" type="button" onclick="window.location.href='login.html'">Login</button>
+
+        <button class="btn-primary py-2 px-4 font-semibold" type="button">Request Help</button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN CONTENT -->
+
+  <main class="flex-grow">
+
+    <!-- Advanced Task Completion Section -->
+    <section class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center gap-12">
+      <div class="flex flex-col max-w-xl w-full">
+        <button aria-label="Previous Task Section" class="btn-icon mb-6" type="button" title="Previous">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            aria-hidden="true" focusable="false">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19.5L8.25 12l6.75-7.5" />
+          </svg>
+        </button>
+        <h2 class="text-black text-3xl font-extrabold mb-3">Advanced Task Completion</h2>
+        <p class="text-gray-600 mb-6">Expert help with complex programming tasks and assignments.</p>
+
+        <ul class="check-list">
+          <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" aria-hidden="true" focusable="false">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg> Bug fixing</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" aria-hidden="true" focusable="false">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg> Feature implementation</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" aria-hidden="true" focusable="false">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg> Performance optimization</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" aria-hidden="true" focusable="false">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg> Code review</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" aria-hidden="true" focusable="false">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg> Technical consultation</li>
+        </ul>
+
+        <button class="btn-primary w-fit font-semibold" type="button">Request Help</button>
+      </div>
+      <div class="flex-1">
+        <img src="https://media.istockphoto.com/id/1459313027/photo/choose-the-correct-answer-on-the-exam-questionnaire-with-checkboxes-filling-survey-form-online.jpg?s=612x612&w=0&k=20&c=feIwWiOzecTmL91InPoMGD-JGzUZxvyakU_ILWZ45bA="
+          alt="Close-up of computer screen displaying a code editing IDE with syntax highlighting against vibrant blue and purple ambient lighting"
+          class="rounded-lg shadow-lg w-full object-cover" loading="lazy" onerror="this.style.display='none'" />
+      </div>
+    </section>
+
+    <!-- System Development Section -->
+    <section class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row-reverse items-center gap-12 bg-white">
+      <div class="flex flex-col max-w-xl w-full">
+        <button aria-label="System Development Icon" class="btn-icon mb-6 cursor-default" type="button" title="System Development">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+            aria-hidden="true" focusable="false" width="28" height="28">
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M3 6.75C3 5.784 3.784 5 4.75 5H19.25C20.216 5 21 5.784 21 6.75V17.25C21 18.216 20.216 19 19.25 19H4.75C3.784 19 3 18.216 3 17.25V6.75Z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 9.75H15V14.25H9V9.75Z" />
+          </svg>
+        </button>
+        <h2 class="text-black text-3xl font-extrabold mb-3">System Development</h2>
+        <p class="text-gray-600 mb-6">Custom-built systems to streamline your business processes and improve efficiency.</p>
+
+        <ul class="check-list">
+          <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" aria-hidden="true" focusable="false">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg> User management</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" aria-hidden="true" focusable="false">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg> Data analysis</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" aria-hidden="true" focusable="false">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg> Process automation</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" aria-hidden="true" focusable="false">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg> Integration with existing systems</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" aria-hidden="true" focusable="false">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg> Scalable architecture</li>
+        </ul>
+
+        <button class="btn-primary w-fit font-semibold" type="button">Request Help</button>
+      </div>
+      <div class="flex-1 rounded-lg shadow-lg bg-white h-72 flex items-center justify-center">
+        <!-- Placeholder for missing image, leaving blank white with rounded corners and shadow as in screenshot -->
+        <img src="https://img.freepik.com/premium-photo/html-system-websites-concept_23-2150323552.jpg" alt="System Development placeholder image with database icon and technology representation"
+          class="rounded-lg object-cover" loading="lazy" onerror="this.style.display='none'" />
+      </div>
+    </section>
+
+    <!-- Website Development Section -->
+    <section class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row items-center gap-12 bg-white">
+      <div class="flex flex-col max-w-xl w-full">
+        <button aria-label="Website Development Icon" class="btn-icon mb-6 cursor-default" type="button" title="Website Development">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+            stroke="currentColor" aria-hidden="true" focusable="false" width="28" height="28">
+            <circle cx="12" cy="12" r="9" stroke-width="1.5" />
+            <path stroke-linecap="round" stroke-linejoin="round"
+              d="M21 12h-3m0 0a8.96 8.96 0 0 0-6 8.485M9 12H6m0 0a8.962 8.962 0 0 1-3-6.485M12 3v2m0 14v2" />
+          </svg>
+        </button>
+        <h2 class="text-black text-3xl font-extrabold mb-3">Website Development</h2>
+        <p class="text-gray-600 mb-6">We create responsive, modern websites tailored to your brand and business needs.</p>
+
+        <ul class="check-list">
+          <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" aria-hidden="true" focusable="false">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg> Responsive design</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" aria-hidden="true" focusable="false">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg> SEO optimization</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" aria-hidden="true" focusable="false">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg> Content management</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" aria-hidden="true" focusable="false">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg> E-commerce capabilities</li>
+          <li><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" aria-hidden="true" focusable="false">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+            </svg> Custom functionality</li>
+        </ul>
+
+        <button class="btn-primary w-fit font-semibold" type="button">Request Help</button>
+      </div>
+      <div class="flex-1 rounded-lg shadow-lg overflow-hidden">
+        <img src="https://webandcrafts.com/_next/image?url=https%3A%2F%2Fadmin.wac.co%2Fuploads%2FFor_blog_cover_CAFS_03_e9b1f5d446.jpg&w=4500&q=90"
+          alt="Computer monitor, tablet, and smartphone displaying responsive website design with code visible on the screen and workspace plant decoration"
+          class="w-full h-full object-cover" loading="lazy" onerror="this.style.display='none'" />
+      </div>
+    </section>
+  </main>
+
+  <!-- CALL TO ACTION BANNER -->
+  <section class="section-lightgray py-12 text-center">
+    <h2 class="text-2xl md:text-3xl font-extrabold mb-3">Have a project in mind?</h2>
+    <p class="text-gray-600 mb-8 max-w-lg mx-auto">Let us help you turn your ideas into reality. Get a free consultation
+      today!</p>
+
+    <div class="flex justify-center gap-4">
+      <button class="btn-primary px-6 py-3" type="button">Request Help</button>
+      <button class="btn-secondary px-6 py-3 font-semibold" type="button" onclick="window.location.href='contactus.html'">Contact Us</button>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-white border-t border-gray-200 mt-12">
+    <div class="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-y-8 gap-x-12 text-sm text-gray-600">
+      <div>
+        <div class="flex space-x-3 items-center mb-2">
+          <div class="brand-icon" aria-label="Nubarmij Logo">
+  <img src="F:\draft\logo.jpg" alt="NUBARMIJ Logo" style="height: 48px; border-radius: 8px;" />
+</div>
+
+          <h3 class="font-bold text-black select-none">NUBARMIJ</h3>
+        </div>
+        <p class="text-gray-400 max-w-xs leading-relaxed">Premium Programming Services</p>
+      </div>
+
+      <div>
+        <h4 class="font-semibold text-gray-900 mb-3">Home</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="footer-link">Services</a></li>
+          <li><a href="about.html" class="footer-link">About</a></li>
+          <li><a href="contactus.html" class="footer-link">Contact Us</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-semibold text-gray-900 mb-3">Services</h4>
+        <ul class="space-y-2">
+          <li><a href="#" class="footer-link">Create Your Own Website</a></li>
+          <li><a href="#" class="footer-link">Create Your Own System</a></li>
+          <li><a href="#" class="footer-link">Complete Advanced Task</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4 class="font-semibold text-gray-900 mb-3">Contact Us</h4>
+        <ul class="space-y-2">
+          <li><span class="font-semibold">Email:</span> tameem1216@gmail.com</li>
+          <li><span class="font-semibold">Phone:</span> +201097912642</li>
+          <p class="text-sm text-muted-foreground">
+    <span class="font-medium">WhatsApp:</span>
+    <a href="https://wa.me/+201097912642" class="text-primary hover:underline">Chat with us directly on WhatsApp</a>
+    </p>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom border-t border-gray-200 pt-4">
+      © 2025 NUBARMIJ. All rights reserved. &nbsp;&nbsp;
+      <a href="#" class="footer-link">Terms of Service</a> &nbsp;&nbsp;|&nbsp;&nbsp;
+      <a href="#" class="footer-link">Privacy Policy</a>
+    </div>
+  </footer>
+
+</body>
+
+</html>
